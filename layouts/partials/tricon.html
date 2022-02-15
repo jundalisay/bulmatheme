@@ -1,0 +1,23 @@
+<br>
+<section class="hero is-black has-text-centered py-6 section container">    
+  <h2 class="title is-2">{{ .title | markdownify }}</h2>
+  <h3 class="subtitle is-3">{{ .subtitle }}</h3>        
+  <div class="has-text-centered">
+    <figure class="is-inline-block">      
+      <img src="{{ .image }}" alt="" style="width: 100px;" class="">
+    </figure>
+  </div>
+  <div class="columns is-multiline is-mobile my-5">
+    {{ range .item }}
+      <a href="{{ .link }}" class="zoom-sm column is-4-desktop is-12-mobile">
+        <div class="card has-background-dark card-equal-height p-4">
+          <span style="display: inline-block !important; margin-left: auto !important; margin-right: auto !important;" class="my-3">
+            {{.icon | markdownify }}            
+          </span>
+          <h4 class="title is-4">{{ .title }}</h4>
+          <h5 class="subtitle is-5">{{ .content }}</h5>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</section>

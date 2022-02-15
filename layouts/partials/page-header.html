@@ -1,0 +1,21 @@
+<header class="section">
+  <div class="container has-text-centered">
+    <h1 class="title is-1">{{ .Title | markdownify }}</h1>
+    {{ with .Params.subtitle }}
+      <h2 class="subtitle is-3">{{ . | markdownify }}</h2>
+    {{ end }}
+  
+    {{ with .Params.date }}
+      <small class="has-text-dark">{{ .Format "January 2, 2006" }}</small>
+      <br>
+    {{ end }}
+    
+    {{ if .Params.icon }}
+      <img src="{{ .Params.icon }}" alt="{{ .Params.icontext }}" class="image is-48x48 mt-4" style="box-shadow: none">
+    {{ end }}
+
+    {{ if and (.Params.linkbook) (.Params.linkbooktext) }}
+      <a href="{{ .Params.linkbook }}" class="button mt-4 is-primary is-rounded">{{ .Params.linkbooktext }}</a>
+    {{ end }}    
+  </div>
+</header>

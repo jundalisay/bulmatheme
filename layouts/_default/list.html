@@ -1,0 +1,71 @@
+{{ define "main" }}
+
+<!-- {{ partial "page-header.html" . }} -->
+
+<!-- checking blog -->
+
+{{ if .Params.Banneron }}
+  <style type="text/css">
+    .feature {
+      background: #000 url("{{ .Params.image }}") center center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+    }
+  </style>
+{{ end }}
+
+<section class="section feature">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6 has-text-centered">
+        {{ with .Params.logo }}
+        <div class="has-text-centered">
+          <figure class="image is-inline-block">
+            <img src="{{ . | relURL }}" style="box-shadow: none;" class="pb-4">
+          </figure>
+        </div>
+        {{ end }}
+        <h1 class="title is-2 has-background-dark has-text-light py-4">{{ .Params.title }}</h1>
+        <h2 class="subtitle is-3 mt-2 py-4 has-background-dark has-text-light">{{ .Params.subtitle }}</h2>
+      </div>
+
+      {{ with .Params.youtube }}
+      <div class="column is-6">
+        <div class="has-text-centered label py-5">
+          <figure class="is-inline-block embed-responsive embed-responsive-16by9">      
+            <iframe width="100%" height="auto" class="embed-responsive-item" src="https://www.youtube.com/embed/{{ . }}" allowfullscreen></iframe>
+          </figure>
+        </div>
+      </div>      
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+
+<div class="columns is-multiline is-mobile">
+  {{ $paginator := .Paginate .Data.Pages }}
+  
+  {{ range $paginator.Pages }}
+    <div class="column is-6-desktop is-12-mobile embed-responsive zoom-xs">
+      <a href="{{ .Permalink }}" title="{{ .Title }}">
+        <img src="{{ .Params.image }}" alt="{{ .Title }}">
+        <h2 class="embed-responsive-item subtitle is-3 p-6 mb-6 has-text-white" >{{ .Title }}</h2>                  
+        {{ with .Params.subtitle }}        
+          <h2 class="subtitle is-4 p-3 has-text-light has-background-black" style="position: absolute; bottom: 1px !important; margin: none !important;">{{ . | markdownify }}</h2>       
+        {{ end }}
+      </a>
+    </div>
+  {{ end }}
+
+  {{ partial "paginate.html" . }}      
+
+  </div>
+
+
+</div>
+
+
+{{ end }}

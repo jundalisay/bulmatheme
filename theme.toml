@@ -1,0 +1,18 @@
+name = "Bulma Theme"
+license = "MIT"
+description = "Bulma Theme is a Bulma Theme."
+version = "0.11.0"
+homepage = "https://github.com/jundalisay/bulmatheme"
+license = "Apache-2.0"
+licenselink = "https://github.com/wayn3h0/hugo-bulma/blob/master/LICENSE.md"
+min_version = "0.88.0"
+
+tags = ["bulma", 
+        "responsive", 
+        "modern"]
+
+features = []
+
+[author]
+	name = "Pantry Work"
+    homepage = "https://superphysics.one"
